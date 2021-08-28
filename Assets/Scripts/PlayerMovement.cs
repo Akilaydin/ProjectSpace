@@ -9,13 +9,15 @@ public class PlayerMovement : MonoBehaviour
     private float _distance;
 
     [SerializeField]
-    private float _duration;
+    private float _speed;
+    [SerializeField]
+    private Rigidbody2D _transformToMove;
 
     private void OnMouseDrag()
     {
         Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        transform.DOMove(new Vector3(objPosition.x, objPosition.y + _distance), _duration, false);
+        _transformToMove.DOMove(new Vector3(objPosition.x, objPosition.y + _distance), _speed, false);
     }
 }
