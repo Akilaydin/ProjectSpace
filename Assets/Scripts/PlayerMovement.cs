@@ -20,8 +20,14 @@ public class PlayerMovement : MonoBehaviour
         _movementTween.SetUpdate(UpdateType.Fixed);
     }
 
+    private void OnMouseDown()
+    {
+        Debug.Log("Down");   
+    }
+
     private void OnMouseDrag()
     {
+        Debug.Log("Drag");
         Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
@@ -30,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMouseUp()
     {
+        Debug.Log("Up");
         _rigidbodyToMove.DOKill(false);
     }
 }

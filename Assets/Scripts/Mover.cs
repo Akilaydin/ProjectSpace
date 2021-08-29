@@ -1,30 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
-    [SerializeField]
-    private Vector2 movingDirection;
+    private float _speed;
 
-    private Transform selfTransform;
-    
-    
-    void Start()
+    [SerializeField]
+    private Vector2 _movingDirection;
+
+    [SerializeField]
+    private bool _isCamera = true;
+
+    private Transform _selfTransform;
+
+
+    private void Start()
     {
-        selfTransform = transform;
+        _selfTransform = transform;
     }
 
-    
-    void Update()
+    private void Update()
     {
-        Move(); 
+        if (_isCamera == false)
+        {
+            Move();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (_isCamera == true)
+        {
+            Move();
+        }
     }
 
     private void Move()
     {
-        selfTransform.Translate(movingDirection * speed * Time.deltaTime);
+        _selfTransform.Translate(_movingDirection * _speed * Time.deltaTime);
     }
 }
