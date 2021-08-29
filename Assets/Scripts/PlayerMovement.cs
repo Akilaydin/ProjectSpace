@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Rigidbody2D _rigidbodyToMove;
 
+    [SerializeField]
+    private TimeController _timeController;
+
     private Tween _movementTween;
 
     private void Start()
@@ -22,12 +25,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Down");   
+        _timeController.NormalizeTime();
     }
 
     private void OnMouseDrag()
     {
-        Debug.Log("Drag");
+        
         Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
@@ -35,8 +38,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnMouseUp()
-    {
-        Debug.Log("Up");
+    {      
         _rigidbodyToMove.DOKill(false);
+        _timeController.SlowTime();
     }
 }
