@@ -337,7 +337,7 @@ MonoBehaviour:
   _referenceOnObjectToPool:
     m_AssetGUID: d26bb431f454e7e42bc830fb9eecfebc
     m_SubObjectName: 
-  _poolSize: 300
+  _poolSize: 162
 --- !u!4 &1112386468
 Transform:
   m_ObjectHideFlags: 0
@@ -789,6 +789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pooler: {fileID: 1112386467}
+  _fireSpeed: 0.3
 --- !u!4 &3261228467476341460
 Transform:
   m_ObjectHideFlags: 0
