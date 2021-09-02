@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Chronos;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +9,10 @@ public class InitialVelocitySetter : MonoBehaviour
     private Vector2 _velocity;
 
     [SerializeField]
-    private Rigidbody2D _rigidbody;
+    private Timeline _timeline; 
 
     public void SetVelocity()
     {
-        _rigidbody.velocity = _velocity;
+        _timeline.rigidbody2D.velocity = _velocity;
     }
 }

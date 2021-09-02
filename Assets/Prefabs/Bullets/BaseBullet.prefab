@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: {x: 0, y: 20}
-  _rigidbody: {fileID: 8820222001249288349}
+  _timeline: {fileID: 8965955087891945281}
 --- !u!1 &7105578972034057060
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 8820222001249288349}
   - component: {fileID: 8612043258997698707}
   - component: {fileID: 7913800882674702594}
+  - component: {fileID: 8965955087891945281}
   m_Layer: 0
   m_Name: BaseBullet
   m_TagString: Untagged
@@ -169,14 +170,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7105578972034057060}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -221,3 +222,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialVelocitySetter: {fileID: 4449549058251767199}
+--- !u!114 &8965955087891945281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7105578972034057060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6090da511f8374135a15dd8655adcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordingInterval: 0.5
+  _mode: 1
+  _globalClockKey: GameTime
+  _rewindable: 1
+  _recordingDuration: 30

@@ -1,45 +1,41 @@
-﻿using System.Collections;
+﻿using Chronos;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Timeline))]
 public class Shooting : MonoBehaviour
 {
     [SerializeField]
     private AddressableObjectPooler _pooler;
 
+    [Tooltip("Bullets per second")]
     [SerializeField]
     private float _fireSpeed;
 
-    private float _coolDownTime;
+    private bool _isAbleToShoot = true;
+    private Timeline _timeline;
 
-    private bool _hasShot;
-
-    private void Update()
+    private void Start()
     {
-        if(_hasShot==true)
-        {
-            _coolDownTime += Time.deltaTime;
-            if(_coolDownTime>=_fireSpeed)
-            {
-                _hasShot = false;
-                _coolDownTime = 0;
-            }
-        }
-        if(_hasShot==false)
-        {
-            Shoot();
-        }
-        
+        _timeline = GetComponent<Timeline>();
+        StartCoroutine(ShootRoutine());
     }
 
-    private void Shoot()
+    private IEnumerator ShootRoutine()
     {
-        var obj = _pooler.SpawnFromPool(transform);
-        if (obj == null)
+        yield return _timeline.WaitForSeconds(_fireSpeed);
+
+        while (_isAbleToShoot == true)
         {
-            return;
+            var obj = _pooler.SpawnFromPool(transform);
+            if (obj == null)
+            {
+                yield return null;
+            }
+            yield return _timeline.WaitForSeconds(_fireSpeed);
         }
-        _hasShot = true;
+        
     }
 }
 

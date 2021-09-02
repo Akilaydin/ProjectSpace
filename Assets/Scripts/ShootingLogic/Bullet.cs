@@ -10,6 +10,5 @@ public class Bullet : MonoBehaviour, IPooledObject
     public void OnSpawnedAction()
     {
         _initialVelocitySetter.SetVelocity();
-        Debug.Log("dd");
     }
 }
