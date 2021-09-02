@@ -1,7 +1,8 @@
-﻿using Chronos;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+
 using UnityEngine;
+
+using Chronos;
 
 [RequireComponent(typeof(Timeline))]
 public class Shooting : MonoBehaviour

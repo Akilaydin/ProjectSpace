@@ -1,7 +1,6 @@
-﻿using Chronos;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+using Chronos;
 
 public class TimeController : MonoBehaviour
 {
@@ -17,11 +16,14 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float _hastenTimeScale;
 
+    [SerializeField]
+    private string _clockToControlName = "GameTime";
+
     private Clock _gameTimeClock;
 
     private void Start()
     {
-        _gameTimeClock = Timekeeper.instance.Clock("GameTime");
+        _gameTimeClock = Timekeeper.instance.Clock(_clockToControlName);
     }
 
     public void SlowTime()

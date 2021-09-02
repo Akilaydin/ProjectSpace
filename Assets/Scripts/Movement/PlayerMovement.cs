@@ -2,19 +2,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Events")]
+
+    [SerializeField]
+    private UnityEvent _onDragBegin;
+
+    [SerializeField]
+    private UnityEvent _onDragEnd;
+
+    [Space]
+    [Header("Settings")]
+
     [SerializeField]
     private float _distance;
 
     [SerializeField]
     private float _timeToCompleteMovement;
-    [SerializeField]
-    private Rigidbody2D _rigidbodyToMove;
+
+    [Space]
+    [Header("References")]
 
     [SerializeField]
-    private TimeController _timeController;
+    private Rigidbody2D _rigidbodyToMove;
 
     private Tween _movementTween;
 
@@ -25,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMouseDown()
     {
-        _timeController.NormalizeTime();
+        _onDragBegin.Invoke();
     }
 
     private void OnMouseDrag()
@@ -40,6 +53,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnMouseUp()
     {      
         _rigidbodyToMove.DOKill(false);
-        _timeController.SlowTime();
+        _onDragEnd.Invoke();
     }
 }

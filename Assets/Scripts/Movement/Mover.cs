@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+using Chronos;
+
+[RequireComponent(typeof(Timeline))]
 public class Mover : MonoBehaviour
 {
     [SerializeField]
@@ -13,9 +16,11 @@ public class Mover : MonoBehaviour
 
     private Transform _selfTransform;
 
+    private Timeline _timeline;
 
     private void Start()
     {
+        _timeline = GetComponent<Timeline>();
         _selfTransform = transform;
     }
 
@@ -37,6 +42,6 @@ public class Mover : MonoBehaviour
 
     private void Move()
     {
-        _selfTransform.Translate(_movingDirection * _speed * Time.deltaTime);
+        _selfTransform.Translate(_movingDirection * _speed * _timeline.clock.deltaTime);
     }
 }
