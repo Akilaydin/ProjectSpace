@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f8f53719860fc44a219c1a81057e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slowedTimeScale: 0.1
+  _slowedTimeScale: 0.29
   _normalTimeScale: 1
   _hastenTimeScale: 2
   _clockToControlName: GameTime

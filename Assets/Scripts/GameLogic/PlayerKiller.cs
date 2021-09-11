@@ -6,7 +6,7 @@ public class PlayerKiller : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("The player is dead.");
+            Debug.Log("ТЫ ЛОХ ТВАРЬ ЧМО НЕ МОЖЕШЬ ПРОЙТИ СВОЮ ЖЕ ИГРУ");
         }
     }
 }
