@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialVelocitySetter: {fileID: 4449549058251767199}
+  damageHEHEHEHECount: 1
 --- !u!114 &8965955087891945281
 MonoBehaviour:
   m_ObjectHideFlags: 0

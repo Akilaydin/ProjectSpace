@@ -13,6 +13,12 @@ public class Bullet : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<IDamagable>().GetDamage(damageHEHEHEHECount);
+        IDamagable damagable = collision.GetComponent<IDamagable>();
+
+        if(damagable!=null)
+        {
+            Debug.Log("маслину поймал");
+        }
+        
     }
 }
