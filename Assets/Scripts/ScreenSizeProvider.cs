@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaOfSpawnProvider : MonoBehaviour
+public class ScreenSizeProvider : MonoBehaviour
 {
+
     [SerializeField]
     private float _height;
 
@@ -11,6 +12,8 @@ public class AreaOfSpawnProvider : MonoBehaviour
     private float _offSetY;
 
     private Rect _rect;
+
+    private Vector2 _rightSide, _leftSide;
 
     private void Awake()
     {
@@ -21,18 +24,28 @@ public class AreaOfSpawnProvider : MonoBehaviour
     {
         var widthSenter = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
-        var rightPosition = new Vector2(widthSenter.x, widthSenter.y + _offSetY);
-        var leftPosition = new Vector2(-widthSenter.x, widthSenter.y + _offSetY);
+        _rightSide = new Vector2(widthSenter.x, widthSenter.y + _offSetY);
+        _leftSide = new Vector2(-widthSenter.x, widthSenter.y + _offSetY);
 
-        _rect.x = leftPosition.x;
-        _rect.y = leftPosition.y;
+        _rect.x = _leftSide.x;
+        _rect.y = _leftSide.y;
 
-        _rect.width = rightPosition.x - leftPosition.x;
+        _rect.width = _rightSide.x - _leftSide.x;
         _rect.height = _height;
     }
 
     public Rect GetArea()
     {
         return _rect;
+    }
+
+    public Vector2 GetLeftSide()
+    {
+        return _leftSide;
+    }
+
+    public Vector2 GetRightSide()
+    {
+        return _rightSide;
     }
 }
