@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ColliderPositionConfigurator : MonoBehaviour
+public class ScreenSideCollidersPositionSetter : MonoBehaviour
 {
     [SerializeField]
     private BoxCollider2D _leftCollider;

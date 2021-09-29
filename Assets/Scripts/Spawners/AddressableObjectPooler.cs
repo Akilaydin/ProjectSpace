@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -12,26 +12,22 @@ public class AddressableObjectPooler : MonoBehaviour
     private int _poolSize;
 
     private bool _isReady;
-    private Queue<GameObject> _objectsToPool;
+    private Queue<GameObject> _objectsToPool = new Queue<GameObject>();
 
     private void Awake()
     {
-        _objectsToPool = new Queue<GameObject>();
         _isReady = false;
         FillQueue();
-        
     }
 
     private async void FillQueue()
     {
         for (int i = 0; i < _poolSize; i++)
         {
-            var handle = Addressables.InstantiateAsync(_referenceOnObjectToPool);
-            await handle.Task;
+            var spawnedObject = await Addressables.InstantiateAsync(_referenceOnObjectToPool).Task;
 
-            GameObject obj = handle.Result;
-            obj.SetActive(false);
-            _objectsToPool.Enqueue(obj);
+            spawnedObject.SetActive(false);
+            _objectsToPool.Enqueue(spawnedObject);
         }
         _isReady = true;
     }
@@ -50,15 +46,14 @@ public class AddressableObjectPooler : MonoBehaviour
         obj.transform.position = spawnTransform.position;
         obj.transform.rotation = spawnTransform.rotation;
 
-        var pooledObjectComponent = obj.GetComponent<IPooledObject>();
 
-        if (pooledObjectComponent != null)
+        if (obj.TryGetComponent(out IPooledObject pooledObjectComponent))
         {
             pooledObjectComponent.OnSpawnedAction();
         }
 
         _objectsToPool.Enqueue(obj);
+
         return obj;
     }
-
 }

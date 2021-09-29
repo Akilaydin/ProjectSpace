@@ -1,5 +1,4 @@
-﻿
-public interface IDamagable
+﻿public interface IDamagable
 {
    void  GetDamage(int damageCount);
 }
