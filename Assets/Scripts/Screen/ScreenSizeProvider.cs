@@ -1,14 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class ScreenSizeProvider : MonoBehaviour
 {
     [SerializeField]
-    private float _height;
-
-    [SerializeField]
-    private float _offSetY;
-
-    private Rect _rect;
+    private UnityEvent _sidesCalculated;
 
     private Vector2 _rightSide, _leftSide;
 
@@ -21,19 +17,10 @@ public class ScreenSizeProvider : MonoBehaviour
     {
         var widthSenter = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
-        _rightSide = new Vector2(widthSenter.x, widthSenter.y + _offSetY);
-        _leftSide = new Vector2(-widthSenter.x, widthSenter.y + _offSetY);
+        _rightSide = new Vector2(widthSenter.x, widthSenter.y);
+        _leftSide = new Vector2(-widthSenter.x, widthSenter.y);
 
-        _rect.x = _leftSide.x;
-        _rect.y = _leftSide.y;
-
-        _rect.width = _rightSide.x - _leftSide.x;
-        _rect.height = _height;
-    }
-
-    public Rect GetArea()
-    {
-        return _rect;
+        _sidesCalculated?.Invoke();
     }
 
     public Vector2 GetLeftSide()
