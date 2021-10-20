@@ -21,7 +21,7 @@ public class TimeController : MonoBehaviour
 
     private Clock _gameTimeClock;
 
-    private void Start()
+    private void Awake()
     {
         _gameTimeClock = Timekeeper.instance.Clock(_clockToControlName);
     }

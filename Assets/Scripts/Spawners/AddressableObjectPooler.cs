@@ -3,6 +3,8 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
+using Cysharp.Threading.Tasks;
+
 public class AddressableObjectPooler : MonoBehaviour
 {
     [SerializeField]
@@ -14,17 +16,18 @@ public class AddressableObjectPooler : MonoBehaviour
     private bool _isReady;
     private Queue<GameObject> _objectsToPool = new Queue<GameObject>();
 
-    private void Awake()
+    private async void Awake()
     {
         _isReady = false;
-        FillQueue();
+        
+        await FillQueue();
     }
 
-    private async void FillQueue()
+    public async UniTask FillQueue()
     {
         for (int i = 0; i < _poolSize; i++)
         {
-            var spawnedObject = await Addressables.InstantiateAsync(_referenceOnObjectToPool).Task;
+            var spawnedObject = await Addressables.InstantiateAsync(_referenceOnObjectToPool);
 
             spawnedObject.SetActive(false);
             _objectsToPool.Enqueue(spawnedObject);

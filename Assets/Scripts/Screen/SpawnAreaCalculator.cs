@@ -10,9 +10,6 @@ public class SpawnAreaCalculator : MonoBehaviour
     private ScreenSizeProvider _provider;
 
     [SerializeField]
-    private BoxCollider2D _testCollider;
-
-    [SerializeField]
     private float _height;
 
     [SerializeField]
@@ -32,13 +29,5 @@ public class SpawnAreaCalculator : MonoBehaviour
         _rect.height = _height;
 
         _areaOfSpawnCalculated?.Invoke();
-
-        ShowTest();
-    }
-
-    private void ShowTest()
-    {
-        _testCollider.size = new Vector2(_rect.width, _rect.height);
-        _testCollider.transform.position = new Vector3(0, _offSetY, 0);
     }
 }
