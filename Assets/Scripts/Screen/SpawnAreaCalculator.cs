@@ -29,5 +29,15 @@ public class SpawnAreaCalculator : MonoBehaviour
         _rect.height = _height;
 
         _areaOfSpawnCalculated?.Invoke();
+        GetRandomPosition();
     }
+    
+    public Vector2 GetRandomPosition()
+    {
+        var positionX = Random.Range(_rect.xMin, _rect.xMax);
+        var positionY = Random.Range(_rect.yMin, _rect.yMax);
+        var position = new Vector2(positionX, positionY);
+        return position;
+    }
+
 }
