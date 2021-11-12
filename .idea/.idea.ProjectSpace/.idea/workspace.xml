@@ -11,6 +11,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Events/UnityGameObjectEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zlyOlDLMKSj4geIxdrptseXcmo" />
@@ -55,7 +56,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1634736952663</updated>
-      <workItem from="1634736967966" duration="1303000" />
+      <workItem from="1634736967966" duration="2667000" />
     </task>
     <servers />
   </component>
