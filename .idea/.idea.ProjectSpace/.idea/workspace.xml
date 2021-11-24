@@ -12,7 +12,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Events/UnityGameObjectEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/ObjectsSpawner.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zlyOlDLMKSj4geIxdrptseXcmo" />
   <component name="ProjectViewState">
@@ -58,6 +58,7 @@
       <updated>1634736952663</updated>
       <workItem from="1634736967966" duration="2667000" />
       <workItem from="1637081592351" duration="670000" />
+      <workItem from="1637693049425" duration="667000" />
     </task>
     <servers />
   </component>
