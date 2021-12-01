@@ -18,29 +18,37 @@ MonoBehaviour:
   m_GUID: 32fc90266a04a144da0a051270961039
   m_SerializeEntries:
   - m_GUID: 5a95b8052bc7b3945810c0046450e5a4
-    m_Address: Assets/Prefabs/Bullets/BaseBullet.prefab
+    m_Address: BaseBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 7105578972034057060, guid: 5a95b8052bc7b3945810c0046450e5a4,
+      type: 3}
+    m_TargetAsset: {fileID: 7105578972034057060, guid: 5a95b8052bc7b3945810c0046450e5a4,
+      type: 3}
   - m_GUID: b71366b488d88d140ad5cab43c02594d
-    m_Address: Assets/Prefabs/Bullets/EnemyBullet.prefab
+    m_Address: EnemyBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 6873721548592249219, guid: b71366b488d88d140ad5cab43c02594d,
+      type: 3}
+    m_TargetAsset: {fileID: 6873721548592249219, guid: b71366b488d88d140ad5cab43c02594d,
+      type: 3}
   - m_GUID: d26bb431f454e7e42bc830fb9eecfebc
-    m_Address: Assets/Prefabs/Bullets/PlayerBullet.prefab
+    m_Address: PlayerBullet
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 6530115258296660468, guid: d26bb431f454e7e42bc830fb9eecfebc,
+      type: 3}
+    m_TargetAsset: {fileID: 6530115258296660468, guid: d26bb431f454e7e42bc830fb9eecfebc,
+      type: 3}
   - m_GUID: e71bcb5f56a64814fbb9ffe99e84b0a0
-    m_Address: Assets/Prefabs/Enemies/BaseEnemy.prefab
+    m_Address: BaseEnemy
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 4624074650555880358, guid: e71bcb5f56a64814fbb9ffe99e84b0a0,
+      type: 3}
+    m_TargetAsset: {fileID: 4624074650555880358, guid: e71bcb5f56a64814fbb9ffe99e84b0a0,
+      type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5502c6fd32b561a4483448c60f4bac6b, type: 2}
   m_SchemaSet:

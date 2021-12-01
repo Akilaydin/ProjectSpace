@@ -5,24 +5,24 @@ using Cysharp.Threading.Tasks;
 public class ObjectsSpawner : MonoBehaviour
 {
     [SerializeField]
-    private UnityGameObjectEvent _enemySpawned;
+    private UnityGameObjectEvent _objectSpawned;
     
     [SerializeField]
-    private AddressableObjectPooler _enemyPooler;
+    private AddressableObjectPooler _pooler;
 
-    private async void Awake()
+    public async void Spawn()
     {
-        await Spawn();
+        await SpawnAsync();
     }
 
-    private async UniTask Spawn()
+    private async UniTask SpawnAsync()
     {
-        await _enemyPooler.FillQueue();
+        await _pooler.FillQueue();
 
-        var enemy = _enemyPooler.SpawnFromPool(transform);
+        var enemy = _pooler.SpawnFromPool(transform);
         
         enemy.SetActive(true);
         
-        _enemySpawned?.Invoke(enemy);
+        _objectSpawned?.Invoke(enemy);
     }
 }

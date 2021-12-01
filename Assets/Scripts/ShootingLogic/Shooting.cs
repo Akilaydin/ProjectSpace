@@ -13,13 +13,15 @@ public class Shooting : MonoBehaviour
     [Tooltip("Bullets per second")]
     [SerializeField]
     private float _fireSpeed;
+    
+    private Timeline _timeline;
 
     private bool _isAbleToShoot = true;
-    private Timeline _timeline;
 
     private void Start()
     {
         _timeline = GetComponent<Timeline>();
+        
         StartCoroutine(ShootRoutine());
     }
 
@@ -27,13 +29,15 @@ public class Shooting : MonoBehaviour
     {
         yield return _timeline.WaitForSeconds(_fireSpeed);
 
-        while (_isAbleToShoot == true)
+        while (_isAbleToShoot)
         {
             var obj = _pooler.SpawnFromPool(transform);
+            
             if (obj == null)
             {
                 yield return null;
             }
+            
             yield return _timeline.WaitForSeconds(_fireSpeed);
         }
         

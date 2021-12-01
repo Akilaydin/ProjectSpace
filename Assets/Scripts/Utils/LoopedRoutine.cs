@@ -1,22 +1,17 @@
 using System.Collections;
 
+using Chronos;
+
 using UnityEngine;
 using UnityEngine.Events;
 
 public class LoopedRoutine : MonoBehaviour
 {
 	[SerializeField]
-	private UnityEvent _occured;
-
-	[SerializeField]
 	private float _delay;
 	
-	private WaitForSeconds _waiter;
-	
-	private void Awake()
-	{
-		_waiter = new WaitForSeconds(_delay);
-	}
+	[SerializeField]
+	private UnityEvent _occured;
 
 	public void Begin()
 	{
@@ -33,8 +28,8 @@ public class LoopedRoutine : MonoBehaviour
 		while (true)
 		{
 			_occured?.Invoke();
-
-			yield return _waiter;
+			Debug.Log(_delay *  Timekeeper.instance.Clock("GameTime").localTimeScale);
+			yield return new WaitForSeconds(_delay *  Timekeeper.instance.Clock("GameTime").localTimeScale);
 		}
 	}
 }
