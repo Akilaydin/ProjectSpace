@@ -65,7 +65,17 @@ PrefabInstance:
     - target: {fileID: 7105578972034057060, guid: 5a95b8052bc7b3945810c0046450e5a4,
         type: 3}
       propertyPath: m_Name
-      value: BaseBullet
+      value: EnemyBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173393232487075490, guid: 5a95b8052bc7b3945810c0046450e5a4,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -311260851
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173393232487075490, guid: 5a95b8052bc7b3945810c0046450e5a4,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a95b8052bc7b3945810c0046450e5a4, type: 3}

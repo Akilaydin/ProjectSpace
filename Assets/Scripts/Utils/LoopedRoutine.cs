@@ -28,7 +28,7 @@ public class LoopedRoutine : MonoBehaviour
 		while (true)
 		{
 			_occured?.Invoke();
-			Debug.Log(_delay *  Timekeeper.instance.Clock("GameTime").localTimeScale);
+
 			yield return new WaitForSeconds(_delay *  Timekeeper.instance.Clock("GameTime").localTimeScale);
 		}
 	}

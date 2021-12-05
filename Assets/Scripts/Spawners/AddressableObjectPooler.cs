@@ -5,19 +5,27 @@ using UnityEngine.AddressableAssets;
 
 using Cysharp.Threading.Tasks;
 
+[RequireComponent(typeof(IRandomizer))]
 public class AddressableObjectPooler : MonoBehaviour
 {
     [SerializeField]
-    private AssetReference _referenceOnObjectToPool;
-
+    private AssetReference[] _referencesOnObjectToPool;
+    
     [SerializeField]
     private int _poolSize;
 
-    private bool _isReady;
+    private IRandomizer _randomizer;
+    
     private Queue<GameObject> _objectsToPool = new Queue<GameObject>();
+    
+    private bool _isReady;
 
     private async void Awake()
     {
+        _randomizer = GetComponent<IRandomizer>();
+        
+        _randomizer.SetMax(_referencesOnObjectToPool.Length - 1);
+        
         _isReady = false;
         
         await FillQueue();
@@ -25,14 +33,22 @@ public class AddressableObjectPooler : MonoBehaviour
 
     public async UniTask FillQueue()
     {
-        for (int i = 0; i < _poolSize; i++)
+        if (_isReady == false)
         {
-            var spawnedObject = await Addressables.InstantiateAsync(_referenceOnObjectToPool);
+            for (int i = 0; i < _poolSize; i++)
+            {
+                var reference = _referencesOnObjectToPool[UnityEngine.Random.Range(0, _randomizer.GetIndex())];
+            
+                var spawnedObject = await Addressables.InstantiateAsync(reference);
 
-            spawnedObject.SetActive(false);
-            _objectsToPool.Enqueue(spawnedObject);
+                spawnedObject.SetActive(false);
+            
+                _objectsToPool.Enqueue(spawnedObject);
+            }
+            
+            _isReady = true;
+
         }
-        _isReady = true;
     }
 
     public GameObject SpawnFromPool(Transform spawnTransform)
@@ -43,7 +59,7 @@ public class AddressableObjectPooler : MonoBehaviour
             return null;
         }
 
-        GameObject obj = _objectsToPool.Dequeue();
+        var obj = _objectsToPool.Dequeue();
 
         obj.SetActive(true);
         obj.transform.position = spawnTransform.position;
