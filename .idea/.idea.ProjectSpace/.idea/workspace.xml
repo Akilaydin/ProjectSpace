@@ -11,6 +11,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/ParentSetter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/PositionCopier.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IRandomizer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Randomizers/MinMaxRandomizer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Events/UnityGameObjectEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/ObjectsSpawner.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -60,6 +64,7 @@
       <workItem from="1637081592351" duration="670000" />
       <workItem from="1637693049425" duration="667000" />
       <workItem from="1638370867072" duration="2257000" />
+      <workItem from="1638711584516" duration="2396000" />
     </task>
     <servers />
   </component>
