@@ -65,7 +65,6 @@ public class AddressableObjectPooler : MonoBehaviour
         obj.transform.position = spawnTransform.position;
         obj.transform.rotation = spawnTransform.rotation;
 
-
         if (obj.TryGetComponent(out IPooledObject pooledObjectComponent))
         {
             pooledObjectComponent.OnSpawnedAction();

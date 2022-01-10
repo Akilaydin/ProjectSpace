@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
-
-using Chronos;
 
 using UnityEngine;
 using UnityEngine.Events;
 
+using Chronos;
+
+[RequireComponent(typeof(Timeline))]
 public class LoopedRoutine : MonoBehaviour
 {
 	[SerializeField]
@@ -13,23 +15,39 @@ public class LoopedRoutine : MonoBehaviour
 	[SerializeField]
 	private UnityEvent _occured;
 
+	private Timeline _timeline;
+
+	private bool _isStopped;
+	
+	private void Awake()
+	{
+		_timeline = GetComponent<Timeline>();
+	}
+
 	public void Begin()
 	{
+		_isStopped = false;
+		
 		StartCoroutine(IncreaseRoutine());
 	}
 
 	public void Stop()
 	{
+		_isStopped = true;
+		
 		StopCoroutine(IncreaseRoutine());
 	}
 
 	private IEnumerator IncreaseRoutine()
 	{
-		while (true)
+		while (_isStopped == false)
 		{
 			_occured?.Invoke();
-
-			yield return new WaitForSeconds(_delay *  Timekeeper.instance.Clock("GameTime").localTimeScale);
+			
+			// yield return new WaitForSeconds(_delay *  Timekeeper.instance.Clock("GameTime").localTimeScale);
+			_timeline.WaitForSeconds(_delay);
 		}
+		
+		yield break;
 	}
 }

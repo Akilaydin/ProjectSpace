@@ -11,9 +11,6 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private Vector2 _movingDirection;
 
-    [SerializeField]
-    private bool _isCamera = true;
-
     private Transform _selfTransform;
 
     private Timeline _timeline;
@@ -26,18 +23,7 @@ public class Mover : MonoBehaviour
 
     private void Update()
     {
-        if (_isCamera == false)
-        {
-            Move();
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (_isCamera == true)
-        {
-            Move();
-        }
+        Move();
     }
 
     private void Move()

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 
 using Cysharp.Threading.Tasks;
 
@@ -10,6 +12,17 @@ public class ObjectsSpawner : MonoBehaviour
     [SerializeField]
     private AddressableObjectPooler _pooler;
 
+    [SerializeField]
+    private Transform _rootTransform;
+
+    private void OnValidate()
+    {
+        if (_rootTransform == null)
+        {
+            _rootTransform = transform;
+        }
+    }
+
     public async void Spawn()
     {
         await SpawnAsync();
@@ -19,10 +32,10 @@ public class ObjectsSpawner : MonoBehaviour
     {
         await _pooler.FillQueue();
 
-        var enemy = _pooler.SpawnFromPool(transform);
+        var spawnedObject = _pooler.SpawnFromPool(_rootTransform);
         
-        enemy.SetActive(true);
+        spawnedObject.SetActive(true);
         
-        _objectSpawned?.Invoke(enemy);
+        _objectSpawned?.Invoke(spawnedObject);
     }
 }
