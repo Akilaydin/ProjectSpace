@@ -17,6 +17,7 @@ public class SpawnAreaCalculator : MonoBehaviour
 
     private Rect _rect;
 
+   
     public void CalculateSpawnArea()
     {
         var leftSide = _provider.GetLeftSide();
@@ -27,6 +28,7 @@ public class SpawnAreaCalculator : MonoBehaviour
 
         _rect.width = rightSide.x - leftSide.x;
         _rect.height = _height;
+
 
         _areaOfSpawnCalculated?.Invoke();
     }

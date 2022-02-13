@@ -6,29 +6,26 @@ using UnityEngine.Events;
 
 using Chronos;
 
-[RequireComponent(typeof(Timeline))]
 public class LoopedRoutine : MonoBehaviour
 {
 	[SerializeField]
 	private float _delay;
-	
+
 	[SerializeField]
 	private UnityEvent _occured;
 
-	private Timeline _timeline;
-
 	private bool _isStopped;
-	
-	private void Awake()
-	{
-		_timeline = GetComponent<Timeline>();
-	}
+
+	private Coroutine _coroutine; 
 
 	public void Begin()
 	{
 		_isStopped = false;
-		
-		StartCoroutine(IncreaseRoutine());
+
+		if (_coroutine==null)
+        {
+			_coroutine = StartCoroutine(IncreaseRoutine());
+		}
 	}
 
 	public void Stop()
@@ -36,6 +33,8 @@ public class LoopedRoutine : MonoBehaviour
 		_isStopped = true;
 		
 		StopCoroutine(IncreaseRoutine());
+
+		_coroutine = null;
 	}
 
 	private IEnumerator IncreaseRoutine()
@@ -44,8 +43,8 @@ public class LoopedRoutine : MonoBehaviour
 		{
 			_occured?.Invoke();
 			
-			// yield return new WaitForSeconds(_delay *  Timekeeper.instance.Clock("GameTime").localTimeScale);
-			_timeline.WaitForSeconds(_delay);
+			 yield return new WaitForSeconds(_delay *  Timekeeper.instance.Clock("GameTime").localTimeScale);
+			//_timeline.WaitForSeconds(_delay);
 		}
 		
 		yield break;

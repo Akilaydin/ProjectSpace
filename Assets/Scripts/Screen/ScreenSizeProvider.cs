@@ -13,6 +13,11 @@ public class ScreenSizeProvider : MonoBehaviour
         CalculateArea();
     }
 
+    private void Update()
+    {
+        CalculateArea();
+    }
+
     private void CalculateArea()
     {
         var widthSenter = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
